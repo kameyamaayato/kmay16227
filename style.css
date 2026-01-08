@@ -1,4 +1,10 @@
 /* ページ背景 */
+html, body {
+  height: 100%;
+}
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
@@ -8,39 +14,47 @@ body {
 /* 中央の発表カード */
 .page {
   max-width: 960px;
-  margin: 24px auto;
+  margin: 12px auto;
   background: #ffffff;
-  padding: 24px 28px;
+  padding: 16px 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-height: calc(100vh - 24px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* 上段 */
 .top-section {
   border-bottom: 1px solid #ddd;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .program-title {
   margin: 0;
-  font-size: 26px;
+  font-size: 22px;
 }
 
 .developer-name {
   margin: 4px 0 0;
   color: #555;
+  font-size: 13px;
 }
 
 /* 中段（左右に分割） */
 .middle-section {
   display: flex;
-  gap: 20px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex: 1 1 auto;
+  align-items: stretch;
 }
 
 .preview-area,
 .description-area {
   flex: 1;
+  min-height: 0; /* flex 子のオーバーフローを抑える */
 }
 
 /* 動作イメージ表示枠 */
@@ -49,7 +63,7 @@ body {
   background: #fafafa;
   border-radius: 8px;
   padding: 8px;
-  height: 260px;
+  height: clamp(140px, 28vh, 260px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,12 +80,14 @@ body {
   background: #fafafa;
   padding: 12px;
   border-radius: 8px;
+  overflow: auto;
+  max-height: calc(100vh - 260px);
 }
 
 /* 下段 */
 .bottom-section {
   border-top: 1px solid #ddd;
-  padding-top: 16px;
+  padding-top: 12px;
 }
 
 .info-row {
